@@ -1,4 +1,3 @@
--- SQLite
 CREATE TABLE agency (
 	id int4 NOT NULL,
 	"name" varchar(255) NOT NULL,
@@ -34,8 +33,8 @@ CREATE TABLE calendar (
 	sunday bool NULL,
 	start_date date NULL,
 	end_date date NULL,
-    CONSTRAINT calendar_pkey PRIMARY KEY (uid),
-	CONSTRAINT calendar_service_id_feed_id_key UNIQUE (service_id, feed_id)
+    CONSTRAINT calendar_pkey PRIMARY KEY (service_id),
+	CONSTRAINT calendar_service_id_feed_id_key UNIQUE (service_id)
 );
 
 
@@ -43,13 +42,13 @@ CREATE TABLE calendar_date (
 	service_id varchar(255) NOT NULL,
 	"date" date NOT NULL,
     exception_type int4 NOT NULL,
-    CONSTRAINT calendar_date_pkey PRIMARY KEY (uid),
-	CONSTRAINT calendar_date_service_id_date_feed_id_key UNIQUE (service_id, date, feed_id)
+    CONSTRAINT calendar_date_pkey PRIMARY KEY (service_id),
+	CONSTRAINT calendar_date_service_id_date_feed_id_key UNIQUE (service_id, date)
 );
 
 CREATE TABLE trip (
 	trip_id varchar(255) NOT NULL,
 	route_id varchar(255) NOT NULL,
 	service_id varchar(255) NOT NULL,
-    CONSTRAINT trip_pkey PRIMARY KEY (uid),
+    CONSTRAINT trip_pkey PRIMARY KEY (trip_id)
 );	
