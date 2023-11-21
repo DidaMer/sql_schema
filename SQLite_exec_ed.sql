@@ -9,27 +9,27 @@ DROP TABLE IF EXISTS fare_rules;
 DROP TABLE IF EXISTS fare_attributes;
 
 CREATE TABLE agency (
-	id int4 NOT NULL,
-	"name" varchar(255) NOT NULL,
-	url varchar(512) NULL,
-	timezone varchar(255) NULL,
-	lang varchar(20) NULL,
-	phone varchar(255) NULL,
-	fare_url varchar(512) NULL,
-	email varchar(255) NULL,
-	CONSTRAINT agency_pk PRIMARY KEY (id)
+	id varchar(255) NOT NULL,             -- Type=ID
+	"name" varchar(255) NOT NULL,         -- Type=Texte
+	url varchar(512) NULL,                -- Type=URL
+	timezone varchar(255) NULL,           -- Type=Fuseau horaire
+	lang varchar(20) NULL,                -- Type=Code de langue
+	phone varchar(255) NULL,              -- Type=Numéro de téléphone
+	fare_url varchar(512) NULL,           -- Type=URL
+	email varchar(255) NULL,              -- Type=Adresse e-mail
+	CONSTRAINT agency_pk PRIMARY KEY (id) -- Type=ID
 );
 
 CREATE TABLE route (
-	id int4 NOT NULL,
-	agency_id varchar(255) NULL,
-	short_name varchar(255) NOT NULL,
-	long_name varchar(255) NOT NULL,
-	description varchar(255) NULL,
-	"type" int4 NULL,
-	url varchar(255) NULL,
-	CONSTRAINT route_pk PRIMARY KEY (id),
-	CONSTRAINT route_agency_fk FOREIGN KEY (agency_id) REFERENCES agency(id)
+	id varchar(255) NOT NULL,             -- Type=ID
+	agency_id varchar(255) NULL,          -- Type=ID qui fait référence à agency.agency_id
+	short_name varchar(255) NOT NULL,     -- Type=Texte
+	long_name varchar(255) NOT NULL,      -- Type=Texte
+	description varchar(255) NULL,        -- Type=Texte
+	"type" int4 NULL,                     -- Type=Énumération
+	url varchar(255) NULL,                -- Type=URL
+	CONSTRAINT route_pk PRIMARY KEY (id), 
+	CONSTRAINT route_agency_fk FOREIGN KEY (agency_id) REFERENCES agency(id) 
 );
 
 CREATE TABLE calendar (
