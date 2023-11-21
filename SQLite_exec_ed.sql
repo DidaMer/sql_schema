@@ -51,4 +51,32 @@ CREATE TABLE trip (
 	route_id varchar(255) NOT NULL,
 	service_id varchar(255) NOT NULL,
     CONSTRAINT trip_pkey PRIMARY KEY (trip_id)
-);	
+);
+
+
+
+CREATE TABLE stop (
+	stop_id int4 NOT NULL UNIQUE,
+	stop_code int4 NOT NULL,
+	stop_name varchar(255) NULL,
+	stop_desc varchar(255) NULL,
+	stop_lat int4 NOT NULL,
+	stop_lon int4 NOT NULL,
+	zone_id int4 NULL,
+	stop_url varchar(255) NOT NULL,
+	location_type varchar(255) NULL,
+	wheelchair_boarding int4 NULL,
+	level_id int4 NULL,
+	platform_code varchar(255) NULL,	
+	PRIMARY KEY (stop_id)
+) ;
+
+CREATE TABLE stop_time (
+	stop_times_id int NOT NULL UNIQUE,
+	stop_id int  NOT NULL,
+	arrival_time DATETIME NOT NULL,
+	departure_time DATETIME NOT NULL,
+	stop_sequence str NOT NULL,	
+	PRIMARY KEY (stop_times_id )
+	FOREIGN KEY (stop_id) REFERENCES stop(stop_id)
+) ;	
