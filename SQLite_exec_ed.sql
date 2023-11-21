@@ -57,12 +57,6 @@ CREATE TABLE trip (
 	route_id varchar(255) NOT NULL,
 	service_id varchar(255) NOT NULL,
     CONSTRAINT trip_pkey PRIMARY KEY (trip_id)
-<<<<<<< HEAD
-);	
-=======
-);
-
-
 
 CREATE TABLE stop (
 	stop_id int4 NOT NULL UNIQUE,
@@ -89,4 +83,24 @@ CREATE TABLE stop_time (
 	PRIMARY KEY (stop_times_id )
 	FOREIGN KEY (stop_id) REFERENCES stop(stop_id)
 ) ;	
->>>>>>> 90995468b6f14c7380ec7a1a3d1cbcb83627b48d
+
+CREATE TABLE fare_rules (
+	fare_id varchar(256),
+	route_id varchar(256),
+	origin_id int,
+	destination_id int,
+	constrains_id int,
+	CONSTRAINT fare_rule_id PRIMARY KEY (fare_id route_id)
+);
+
+CREATE TABLE fare_attributes (
+	fare_id varchar(256),
+	price float,
+	currency_type varchar(256),
+	payment_method enum('0', '1'),
+	transfers enum('0', '1', '2'),
+	agency_id varchar(256),
+	transfer_duration int,
+	CONSTRAINT fare_id_pkey PRIMARY KEY (fare_id)
+);
+
