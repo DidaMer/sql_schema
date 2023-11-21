@@ -15,7 +15,7 @@ CREATE TABLE agency (
 	timezone varchar(255) NULL,           -- Type=Fuseau horaire
 	lang varchar(20) NULL,                -- Type=Code de langue
 	phone varchar(255) NULL,              -- Type=Numéro de téléphone
-	fare_url varchar(512) NULL,     s      -- Type=URL
+	fare_url varchar(512) NULL,           -- Type=URL
 	email varchar(255) NULL,              -- Type=Adresse e-mail
 	PRIMARY KEY (id)                      -- Type=ID
 );
