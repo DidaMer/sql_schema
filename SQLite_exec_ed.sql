@@ -1,3 +1,14 @@
+DROP TABLE IF EXISTS agency;
+DROP TABLE IF EXISTS route;
+DROP TABLE IF EXISTS calendar;
+DROP TABLE IF EXISTS calendar_date;
+DROP TABLE IF EXISTS trip;
+
+
+
+
+
+
 CREATE TABLE agency (
 	id int4 NOT NULL,
 	"name" varchar(255) NOT NULL,
