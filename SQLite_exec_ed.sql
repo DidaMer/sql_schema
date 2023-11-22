@@ -21,7 +21,7 @@ CREATE TABLE agency (
 );
 
 CREATE TABLE route (
-	id varchar(255) NOT NULL,             -- Type=ID
+	route_id varchar(255) NOT NULL,             -- Type=ID
 	agency_id varchar(255) NULL,          -- Type=ID qui fait référence à agency.agency_id
 	short_name varchar(255) NOT NULL,     -- Type=Texte
 	long_name varchar(255) NOT NULL,      -- Type=Texte
@@ -53,6 +53,7 @@ CREATE TABLE calendar_date (
 	"date" date NOT NULL,
     exception_type int4 NOT NULL,
     CONSTRAINT calendar_date_pkey PRIMARY KEY (service_id),
+	CONSTRAINT service_id FOREIGN KEY (service_id) REFERENCES calendar(service_id),
 	CONSTRAINT calendar_date_service_id_date_feed_id_key UNIQUE (service_id, date)
 );
 
@@ -61,7 +62,9 @@ CREATE TABLE trip (
 	route_id varchar(255) NOT NULL,
 	service_id varchar(255) NOT NULL,
     CONSTRAINT trip_pkey PRIMARY KEY (trip_id)
-);
+	CONSTRAINT route_id FOREIGN KEY (route_id) REFERENCES route(route_id)
+	CONSTRAINT service_id FOREIGN KEY (service_id) REFERENCES calendar(service_id)
+);	
 
 CREATE TABLE stop (
 	stop_id int4 NOT NULL UNIQUE,
